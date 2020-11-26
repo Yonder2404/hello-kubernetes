@@ -18,5 +18,17 @@ pipeline {
            {
              appVersion = "test-${BUILD_NUMBER}" 
              buildNumber = BUILD_NUMBER
+       }      
+   }
+}
+      stage('Build Docker Image') {
+         steps {
+           script
+           {
+             sh "echo ${appVersion}"
+             dockerImage = docker.build("registry-devsecops.intelix.biz/hello-prueba:$appVersion", 'DockerFIlePath')
+            }
+         }
+      }
    }
 }
