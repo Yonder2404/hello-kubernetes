@@ -24,7 +24,7 @@ pipeline {
       stage('Build Docker Image') {
          steps {
              sh "echo ${appVersion}"
-             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 cd hello-kubernetes && docker build --no-cache --build-arg IMAGE_VERSION="1.8" --build-arg IMAGE_CREATE_DATE="'date -u +"%Y-%m-%dT%H:%M:%SZ"'" --build-arg IMAGE_SOURCE_REVISION="'git rev-parse HEAD'" -f Dockerfile -t "pruebagit" app"
+             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 cd hello-kubernetes && docker build -t registry-devsecops.intelix.biz/yondre -f Dockerfile app
             
          }
       }
