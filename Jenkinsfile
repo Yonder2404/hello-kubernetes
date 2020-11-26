@@ -12,7 +12,7 @@ pipeline {
            sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 git clone https://github.com/Yonder2404/hello-kubernetes.git --branch master --single-branch"
          }
       }
-      stage('Bump Version — Using build') {
+      stage('Bump Version') {
          steps {
            script
            {
