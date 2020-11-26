@@ -26,7 +26,7 @@ pipeline {
            script
            {
              sh "echo ${appVersion}"
-             dockerImage = docker.build("registry-devsecops.intelix.biz/hello-prueba:$appVersion , -f Dockerfile app"")
+             dockerImage = docker.build("registry-devsecops.intelix.biz/hello-prueba:$appVersion-f Dockerfile app"")
             }
          }
       }
