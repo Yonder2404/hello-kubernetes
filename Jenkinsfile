@@ -1,4 +1,7 @@
 pipeline {
+   environment {
+     workstation = "devsecops@10.48.128.17"
+  }
    agent any
    stages{
       stage('Test de conexion ssh'){
