@@ -6,13 +6,13 @@ pipeline {
    stages{
       stage('Test de conexion ssh'){
          steps{
-           sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17"
+           sh "ssh -o StrictHostKeyChecking=no -T $workstation"
          }
       }
       stage('Git clone'){
          steps{
-           sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 mkdir -p hello-kubernetes"
-           sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 git clone https://github.com/Yonder2404/hello-kubernetes.git --branch master --single-branch"
+           sh "ssh -o StrictHostKeyChecking=no -T $workstation mkdir -p hello-kubernetes"
+           sh "ssh -o StrictHostKeyChecking=no -T $workstation git clone https://github.com/Yonder2404/hello-kubernetes.git --branch master --single-branch"
          }
       }
       stage('Bump Version') {
@@ -27,13 +27,13 @@ pipeline {
       stage('BuildDocker Image') {
          steps {
              sh "echo ${appVersion}"
-             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 docker build -f /home/devsecops/hello-kubernetes/Dockefile -t registry-devsecops.intelix.biz/yondre '/home/devsecops/hello-kubernetes/app'"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker build -f /home/devsecops/hello-kubernetes/Dockefile -t registry-devsecops.intelix.biz/yondre '/home/devsecops/hello-kubernetes/app'"
             
          }
       }
       stage('PushDocker Image') {
          steps {
-             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 docker push registry-devsecops.intelix.biz/yondre"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker push registry-devsecops.intelix.biz/yondre"
          }       
       }
    }
