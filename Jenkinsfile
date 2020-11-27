@@ -3,6 +3,7 @@ pipeline {
      workstation = "devsecops@10.48.128.17"
      Git_Repo = "https://github.com/Yonder2404/hello-kubernetes.git"
      Image_Docker = "registry-devsecops.intelix.biz/yondre"
+     Registry_Docker = "registry-devsecops.intelix.biz"
   }
    agent any
    stages{
