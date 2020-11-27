@@ -2,6 +2,7 @@ pipeline {
    environment {
      workstation = "devsecops@10.48.128.17"
      Git_Repo = "https://github.com/Yonder2404/hello-kubernetes.git"
+     Image_Docker = "registry-devsecops.intelix.biz/yondre"
   }
    agent any
    stages{
@@ -28,13 +29,13 @@ pipeline {
       stage('BuildDocker Image') {
          steps {
              sh "echo ${appVersion}"
-             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker build -f /home/devsecops/hello-kubernetes/Dockefile -t registry-devsecops.intelix.biz/yondre '/home/devsecops/hello-kubernetes/app'"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker build -f /home/devsecops/hello-kubernetes/Dockefile -t $Image_Docker '/home/devsecops/hello-kubernetes/app'"
             
          }
       }
       stage('PushDocker Image') {
          steps {
-             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker push registry-devsecops.intelix.biz/yondre"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker push $Image_Docker"
          }       
       }
    }
