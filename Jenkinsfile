@@ -24,7 +24,7 @@ pipeline {
       stage('Build Docker Image') {
          steps {
              sh "echo ${appVersion}"
-             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 docker build -f '/home/devsecops/hello-kubernetes/Dockerfile' -t registry-devsecops.intelix.biz/yondre"
+             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 docker build -f '/home/devsecops/hello-kubernetes/Dockerfile' -t 'registry-devsecops.intelix.biz/yondre'"
             
          }
       }
