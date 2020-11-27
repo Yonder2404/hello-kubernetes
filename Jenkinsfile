@@ -28,5 +28,10 @@ pipeline {
             
          }
       }
+      stage('Push Image') {
+         steps {
+             sh "ssh -o StrictHostKeyChecking=no -T devsecops@10.48.128.17 docker push registry-devsecops.intelix.biz/yondre"
+         }       
+      }
    }
 }
