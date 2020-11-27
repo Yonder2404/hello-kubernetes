@@ -1,6 +1,7 @@
 pipeline {
    environment {
      workstation = "devsecops@10.48.128.17"
+     Git_Repo = "https://github.com/Yonder2404/hello-kubernetes.git"
   }
    agent any
    stages{
@@ -12,7 +13,7 @@ pipeline {
       stage('Git clone'){
          steps{
            sh "ssh -o StrictHostKeyChecking=no -T $workstation mkdir -p hello-kubernetes"
-           sh "ssh -o StrictHostKeyChecking=no -T $workstation git clone https://github.com/Yonder2404/hello-kubernetes.git --branch master --single-branch"
+           sh "ssh -o StrictHostKeyChecking=no -T $workstation git clone $Git_Repo --branch master --single-branch"
          }
       }
       stage('Bump Version') {
