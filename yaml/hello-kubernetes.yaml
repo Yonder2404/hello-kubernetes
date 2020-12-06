@@ -31,4 +31,7 @@ spec:
         image: registry-devsecops.intelix.biz/yonder
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: my-secret
+        
 
