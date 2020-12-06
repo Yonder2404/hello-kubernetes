@@ -30,7 +30,7 @@ pipeline {
       stage('BuildDocker Image') {
          steps {
              sh "echo ${appVersion}"
-             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker build -f /home/rke/hello-kubernetes/Dockefile -t $Image_Docker '/home/devsecops/hello-kubernetes/app'"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation docker build -f /home/rke/hello-kubernetes/Dockefile -t $Image_Docker '/home/rke/hello-kubernetes/app'"
             
          }
       }
