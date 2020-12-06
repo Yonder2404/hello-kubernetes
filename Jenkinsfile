@@ -39,5 +39,10 @@ pipeline {
              sh "ssh -o StrictHostKeyChecking=no -T $workstation docker push $Image_Docker"
          }       
       }
-   }
+      stage('Deployment-k8s') {
+         steps {
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation kubectl create -f /helllo-kubernetes/yaml/hello-kubernetes.yaml"
+         }   
+      }
+   }   
 }
