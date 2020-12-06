@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: registry-devsecops.intelix.biz/hello-intelix
+        image: registry-devsecops.intelix.biz/yonder
         ports:
         - containerPort: 8080
 
