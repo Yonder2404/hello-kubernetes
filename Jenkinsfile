@@ -1,6 +1,6 @@
 pipeline {
    environment {
-     workstation = "devsecops@10.48.128.17"
+     workstation = "rke@10.48.128.10"
      Git_Repo = "https://github.com/Yonder2404/hello-kubernetes.git"
      Image_Docker = "registry-devsecops.intelix.biz/yonder"
      Registry_Docker = "registry-devsecops.intelix.biz"
