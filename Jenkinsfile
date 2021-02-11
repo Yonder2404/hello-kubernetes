@@ -41,7 +41,7 @@ pipeline {
       }
       stage('Deployment-k8s') {
          steps {
-             sh "ssh -o StrictHostKeyChecking=no -T $workstation kubectl --kubeconfig kube_config_cluster.yml create -f hello-kubernetes/yaml/hello-kubernetes.yaml"
+             sh "ssh -o StrictHostKeyChecking=no -T $workstation kubectl -f hello-kubernetes/yaml/hello-kubernetes.yaml"
          }   
       }
    }   
